@@ -1,4 +1,3 @@
-import { mainColor } from '@/colors'
 import React from 'react'
 import { Button } from './ui/button'
 

@@ -1,4 +1,3 @@
-import { mainColor } from '@/colors'; // Ensure this imports '#8338ec'
 import { PiBracketsCurlyBold } from "react-icons/pi";
 import React from 'react';
 
