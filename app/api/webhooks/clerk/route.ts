@@ -61,6 +61,7 @@ export async function POST(req: Request) {
   console.log(`Webhook type: ${eventType}`);
 
   if (eventType === 'user.created') {
+    console.log(eventType)
     const { id, email_addresses } = evt.data;
     try {
       await createOrUpdateUser(id, email_addresses);
