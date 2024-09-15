@@ -56,6 +56,7 @@ export async function POST(req: Request) {
 
   // CREATE User in mongodb
   if (eventType === "user.created") {
+    console.log("user created");
     const { id, email_addresses } = evt.data;
 
     const user = {
