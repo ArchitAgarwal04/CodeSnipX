@@ -21,7 +21,7 @@ export const connect = async () => {
 
   try {
     await mongoose.connect(mongoUrl, {
-      dbName: 'codesnipx3', // Ensure this matches your expected DB name
+      dbName: 'codesnipx5', // Ensure this matches your expected DB name
     });
     console.log('MongoDB connected');
     initialized = true;
