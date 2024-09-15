@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 
 let initialized = false;
 
+
+
 export const connect = async () => {
   mongoose.set('strictQuery', true);
 
@@ -27,3 +29,6 @@ export const connect = async () => {
     console.log('MongoDB connection error:', error);
   }
 };
+
+
+
