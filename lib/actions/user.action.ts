@@ -13,34 +13,34 @@ export const createOrUpdateUser = async (
   try {
     await connect();
 
-    // Check if the user exists first
-    let user = await User.findOne({ clerkId: id });
-
-    if (user) {
-      // If user exists, update their information
-      user = await User.findOneAndUpdate(
-        { clerkId: id },
-        {
-          $set: {
-            email: email_addresses[0].email,
-          },
+    const user = await User.findOneAndUpdate(
+      { clerkId: id },
+      {
+        $set: {
+          email: email_addresses[0]?.email, // Using optional chaining to prevent errors
         },
-        { new: true }
-      );
-    } else {
-      // If user doesn't exist, create a new user
-      user = new User({
-        clerkId: id,
-        email: email_addresses[0].email,
-      });
+      },
+      { new: true, upsert: true }
+    );
 
-      await user.save(); // Save the new user to the database
-    }
-
-    console.log(user);
     return user;
-
   } catch (error) {
-    console.log('Error creating or updating user:', error);
+    console.error('Error creating or updating user:', error); // Use console.error for error logging
+    throw new Error('Failed to create or update user'); // Throw error for better error handling
+  }
+};
+
+export const deleteUser = async (id: string) => {
+  try {
+    await connect();
+
+    const result = await User.findOneAndDelete({ clerkId: id });
+
+    if (!result) {
+      console.warn(`No user found with clerkId: ${id}`); // Warning if user not found
+    }
+  } catch (error) {
+    console.error('Error deleting user:', error); // Use console.error for error logging
+    throw new Error('Failed to delete user'); // Throw error for better error handling
   }
 };
