@@ -1,15 +1,31 @@
-"use server";
+import User from '../modals/user.modal';
+import { connect } from '../mongodb/mongoose';
 
-import User from "@/lib/modals/user.modal";
-import { connect } from "@/lib/db";
+// Define the structure of the email addresses
+interface EmailAddress {
+  email: string;
+}
 
-export async function createUser(user: any) {
+export const createOrUpdateUser = async (
+  id: string,
+  email_addresses: EmailAddress[]
+) => {
   try {
     await connect();
-    const newUser = await User.create(user);
-    console.log(newUser);
-    return JSON.parse(JSON.stringify(newUser));
+
+    const user = await User.findOneAndUpdate(
+      { clerkId: id },
+      {
+        $set: {
+          email: email_addresses[0].email,
+        },
+      },
+      { new: true, upsert: true }
+    );
+
+    return user;
   } catch (error) {
-    console.log(error);
+    console.log('Error creating or updating user:', error);
   }
-}
+};
+
