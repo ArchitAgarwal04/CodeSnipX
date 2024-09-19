@@ -4,6 +4,7 @@ import ProfileUser from './ProfileUser'
 import SearchBar from './SearchBar'
 import DarkMode from './DarkMode'
 import { useGlobalContext } from '@/ContextApi'
+import SideBarMenuIcon from './SideBarMenuIcon'
 
 function TopBar() {
 
@@ -13,7 +14,10 @@ function TopBar() {
     <div className={` ${darkMode[1].isSelected ? "bg-slate-800 text-white" : "bg-white text-black"} rounded-lg flex justify-between items-center p-3 `}>
         <ProfileUser/>
         <SearchBar/>
-        <DarkMode/>
+        <div className='flex gap-4 items-center'>
+          <DarkMode/>
+          <SideBarMenuIcon/>
+        </div>
     </div>
   )
 }

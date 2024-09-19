@@ -7,9 +7,10 @@ import { useGlobalContext } from '@/ContextApi'
 
 function Sidebar() {
 
-  const { darkModeObject: {darkMode} , } = useGlobalContext()
+
+  const { darkModeObject: {darkMode} , openSideBarObject: { openSideBar , setOpenSideBar},} = useGlobalContext()
   return (
-    <div className={`w-full p-5 flex flex-col gap-2 h-screen pt-7 ${darkMode[1].isSelected ? "bg-slate-800" : "bg-white"}`}>
+    <div className={` ${ openSideBar ? " fixed z-50 shadow-lg" : "max-md:hidden"} pr-10 p-6  flex flex-col gap-2 h-screen pt-7 ${darkMode[1].isSelected ? "bg-slate-800" : "bg-white"}`}>
         <Logo/>
         <QuickLinks/>
         <Languages />

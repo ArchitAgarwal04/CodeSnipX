@@ -26,7 +26,7 @@ function QuickLinks() {
                 key={index}
                 onClick={() => clickedMenu(index)}
                 // Apply 'bg-purple-600 text-white' conditionally if menu.isSelected is true
-                className={`flex gap-1 items-center p-[7px] px-2 rounded-md w-[60%] ${menu.isSelected ? 'bg-purple-600 text-white' : ''}`}
+                className={`flex gap-1 items-center p-[7px] px-2 rounded-md w-[60%] ${menu.isSelected ? 'bg-purple-600 text-white' : 'text-slate-400'} p-[7px] px-2 rounded-md w-[80%]`}
               >
                 {menu.icons}
                 <span>{menu.name}</span>

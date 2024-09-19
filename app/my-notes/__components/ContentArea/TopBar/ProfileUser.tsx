@@ -30,7 +30,7 @@ function ProfileUser() {
             />
         )}
 
-        <div className='flex flex-col text-sm'>
+        <div className=' max-md:hidden flex flex-col text-sm'>
             {!user ? (
                 loadingUserName
             ) : (
